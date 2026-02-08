@@ -3,16 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <title>AI Spam Tracker Dashboard</title>
+
+    <!-- Dashboard Styling -->
+    <style>
+        body{
+            margin:0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(135deg,#0f172a,#020617);
+            color:#e5e7eb;
+        }
+
+        body > *{
+            max-width:900px;
+            margin-left:auto;
+            margin-right:auto;
+        }
+
+        h2:first-of-type{
+            background:#020617;
+            padding:18px;
+            border-bottom:1px solid #1f2937;
+            border-radius:10px 10px 0 0;
+            margin-top:30px;
+            text-align:center;
+            color:#ffffff;
+        }
+
+        p:first-of-type{
+            text-align:center;
+            color:#94a3b8;
+        }
+
+        h2:nth-of-type(2){
+            margin-top:25px;
+            background:#020617;
+            padding:12px;
+            border-radius:8px;
+            text-align:left;
+        }
+
+        p[align="right"]{
+            background:#4f46e5;
+            padding:12px 16px;
+            border-radius:18px 18px 4px 18px;
+            width:60%;
+            margin-left:auto;
+            margin-top:25px;
+            box-shadow:0 0 10px rgba(79,70,229,0.4);
+            color:white;
+        }
+
+        p[align="left"]{
+            background:#1f2937;
+            padding:12px 16px;
+            border-radius:18px 18px 18px 4px;
+            width:60%;
+            margin-right:auto;
+            margin-top:15px;
+            box-shadow:0 0 10px rgba(0,0,0,0.5);
+        }
+
+        h3{
+            margin-top:30px;
+            background:#020617;
+            padding:12px;
+            border-radius:8px;
+            text-align:center;
+        }
+
+        h3 + p,
+        h3 + p + p,
+        h3 + p + p + p{
+            background:#111827;
+            padding:10px;
+            border-radius:8px;
+            margin-top:8px;
+        }
+
+        textarea{
+            width:100%;
+            background:#020617;
+            border:1px solid #374151;
+            border-radius:10px;
+            padding:12px;
+            color:white;
+            font-size:14px;
+        }
+
+        input[type="submit"]{
+            margin-top:12px;
+            padding:12px 20px;
+            background:linear-gradient(135deg,#6366f1,#7c3aed);
+            border:none;
+            border-radius:10px;
+            color:white;
+            font-weight:bold;
+            cursor:pointer;
+            transition:0.3s;
+        }
+
+        input[type="submit"]:hover{
+            transform:scale(1.05);
+            background:linear-gradient(135deg,#7c3aed,#9333ea);
+        }
+
+        hr{
+            border:0;
+            height:1px;
+            background:#1f2937;
+            margin:25px 0;
+        }
+
+        #statusMessage{
+            margin-top:10px;
+            color:#a5b4fc;
+            font-weight:500;
+        }
+    </style>
 </head>
 
 <body>
-
-<!-- Top navigation -->
-<p>
-    <a href="login.html">Sign In</a> |
-    <a href="login.html">Sign Up</a> |
-    <a href="login.html">Logout</a>
-</p>
 
 <h2>AI Spam Tracker</h2>
 
@@ -30,7 +140,6 @@
     <b>You:</b><br>
     {{user_message}}
 </p>
-<br>
 {% endif %}
 
 <!-- AI RESPONSE -->
@@ -39,7 +148,6 @@
     <b>AI Detector:</b><br>
     {{ai_reply}}
 </p>
-<br>
 {% endif %}
 
 <!-- RESULT SECTION -->
@@ -48,28 +156,27 @@
 
 <p><b>Status:</b> {{prediction}}</p>
 
-<p><b>Spam Probability:</b> {{probability}} %</p>
+<p><b>Spam Probability:</b> {{probability}}%</p>
 
 <p><b>Detected Keywords:</b> {{keywords}}</p>
-
-<br><br>
 {% endif %}
 
 <hr>
 
-<!-- MESSAGE INPUT -->
+<!-- MESSAGE INPUT FORM -->
 <form action="/analyze" method="POST">
 
-<label>Type a new message here:</label>
+    <label>Type a new message here:</label><br><br>
 
-<br><br>
+    <textarea name="message"
+              rows="5"
+              placeholder="Paste email or message to analyze"></textarea>
 
-<textarea name="message" rows="5" cols="90"
-placeholder="Paste email or message to analyze"></textarea>
+    <br>
 
-<br><br>
+    <input type="submit" value="Analyze Message">
 
-<input type="submit" value="Analyze Message">
+    <p id="statusMessage"></p>
 
 </form>
 
