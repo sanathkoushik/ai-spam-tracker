@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Spam Tracker Dashboard</title>
+</head>
+
+<body>
+
+<!-- Top navigation -->
+<p>
+    <a href="login.html">Sign In</a> |
+    <a href="login.html">Sign Up</a> |
+    <a href="login.html">Logout</a>
+</p>
+
+<h2>AI Spam Tracker</h2>
+
+<p><b>Welcome back,</b> {{username}}</p>
+
+<hr>
+
+<h2>Spam Analysis Assistant</h2>
+
+<hr>
+
+<!-- USER MESSAGE -->
+{% if user_message %}
+<p align="right">
+    <b>You:</b><br>
+    {{user_message}}
+</p>
+<br>
+{% endif %}
+
+<!-- AI RESPONSE -->
+{% if ai_reply %}
+<p align="left">
+    <b>AI Detector:</b><br>
+    {{ai_reply}}
+</p>
+<br>
+{% endif %}
+
+<!-- RESULT SECTION -->
+{% if prediction %}
+<h3>Spam Detection Result</h3>
+
+<p><b>Status:</b> {{prediction}}</p>
+
+<p><b>Spam Probability:</b> {{probability}} %</p>
+
+<p><b>Detected Keywords:</b> {{keywords}}</p>
+
+<br><br>
+{% endif %}
+
+<hr>
+
+<!-- MESSAGE INPUT -->
+<form action="/analyze" method="POST">
+
+<label>Type a new message here:</label>
+
+<br><br>
+
+<textarea name="message" rows="5" cols="90"
+placeholder="Paste email or message to analyze"></textarea>
+
+<br><br>
+
+<input type="submit" value="Analyze Message">
+
+</form>
+
+<script src="script.js"></script>
+
+</body>
+</html>
