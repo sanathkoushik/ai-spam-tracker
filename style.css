@@ -1,0 +1,112 @@
+/* Page background */
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: #f2f5f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Center container (your <center>) */
+center {
+    background: #ffffff;
+    width: 420px;
+    padding: 40px 35px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Shield icon */
+h2 {
+    margin: 0;
+    font-size: 40px;
+}
+
+/* Main heading */
+h1 {
+    margin: 10px 0 5px;
+    font-size: 28px;
+    font-weight: 600;
+    color: #222;
+}
+
+/* Subtitle */
+p {
+    margin: 0;
+    color: #666;
+    font-size: 14px;
+}
+
+/* Labels */
+label {
+    font-size: 14px;
+    color: #444;
+    font-weight: 500;
+    float: left;
+}
+
+/* Forgot password link */
+a {
+    font-size: 12px;
+    color: #4aa3df;
+    text-decoration: none;
+    float: right;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Inputs */
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 6px;
+    border: 1px solid #dcdcdc;
+    font-size: 14px;
+    outline: none;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #4aa3df;
+    box-shadow: 0 0 0 2px rgba(74, 163, 223, 0.15);
+}
+
+/* Sign In button */
+input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background: #4aa3df;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background: #3896d3;
+}
+
+/* Bottom text */
+small {
+    color: #888;
+    font-size: 12px;
+}
+
+/* Fix spacing caused by <br> and floats */
+form {
+    text-align: left;
+}
+
+form::after {
+    content: "";
+    display: block;
+    clear: both;
+}
