@@ -1,59 +1,28 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    const form = document.querySelector('form[action="/analyze"]');
     const textarea = document.querySelector('textarea[name="message"]');
-    const submitButton = form.querySelector('input[type="submit"]');
+    const form = document.querySelector('form[action="/analyze"]');
+    const submitButton = document.querySelector('input[type="submit"]');
 
-    if (!form || !textarea || !submitButton) {
-        console.log("Required elements not found");
-        return;
+    // auto focus textarea
+    if (textarea) {
+        textarea.focus();
     }
 
-    // spam detection logic
-    function detectSpam(message) {
+    // prevent form navigation for now
+    if (form && submitButton) {
 
-        let text = message.toLowerCase();
+        form.addEventListener("submit", function (event) {
 
-        let spamWords = [
-            "free",
-            "win",
-            "prize",
-            "money",
-            "offer",
-            "click",
-            "urgent",
-            "limited",
-            "bonus"
-        ];
+            event.preventDefault();   // THIS stops navigation
 
-        for (let word of spamWords) {
-            if (text.includes(word)) {
-                return "Spam";
-            }
-        }
+            submitButton.value = "Analyzing...";
+            submitButton.disabled = true;
 
-        return "Not Spam";
+            console.log("Message submitted:", textarea.value);
+
+        });
+
     }
-
-    // intercept form submission
-    form.addEventListener("submit", function (event) {
-
-        event.preventDefault(); // THIS stops browser from going to /analyze
-
-        let message = textarea.value.trim();
-
-        if (message === "") {
-            alert("Please enter a message first");
-            return;
-        }
-
-        let result = detectSpam(message);
-
-        alert("Spam Detection Result: " + result);
-
-        console.log("Message:", message);
-        console.log("Result:", result);
-
-    });
 
 });
